@@ -27,11 +27,11 @@ class ProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    "Rosemond Bonse",
+                    "Girlie Bonse",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Student, UG Legon",
+                    "Student, KNUST - Kumasi",
                     style: TextStyle(color: Colors.grey),
                   ),
                 ],

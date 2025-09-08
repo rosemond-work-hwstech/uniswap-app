@@ -1,5 +1,5 @@
-import 'package:uniswap/pages/post_item.dart';
 import 'package:flutter/material.dart';
+import 'package:uniswap/pages/post_item.dart';
 
 // 🔹 Product Model
 class Product {
@@ -61,10 +61,9 @@ class HomePage extends StatelessWidget {
         icon: const Icon(Icons.add, color: Colors.white),
         backgroundColor: const Color(0xFF264653),
       ),
-
       body: ListView(
         children: [
-          // Custom Top Bar
+          // 🔹 Custom Top Bar
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             decoration: const BoxDecoration(
@@ -92,7 +91,7 @@ class HomePage extends StatelessWidget {
 
           const SizedBox(height: 16),
 
-          //Categories Scroll
+          // 🔹 Categories Scroll
           SizedBox(
             height: 100,
             child: ListView(
@@ -111,7 +110,7 @@ class HomePage extends StatelessWidget {
 
           const SizedBox(height: 16),
 
-          //Hot Deals (Vertical Grid)
+          // 🔹 Hot Deals Grid
           const SectionTitle(title: "Hot Deals"),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -129,7 +128,12 @@ class HomePage extends StatelessWidget {
                 final product = hotDeals[index];
                 return GestureDetector(
                   onTap: () {
-                    // Navigate to Product Details Page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ProductDetailPage(product: product),
+                      ),
+                    );
                   },
                   child: ProductCard(product: product),
                 );
@@ -137,7 +141,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
 
-          //Recently Viewed (Horizontal Scroll)
+          // 🔹 Recently Viewed Scroll
           const SectionTitle(title: "Recently Viewed"),
           SizedBox(
             height: 230,
@@ -160,7 +164,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-//Section Title Widget
+// 🔹 Section Title Widget
 class SectionTitle extends StatelessWidget {
   final String title;
   const SectionTitle({super.key, required this.title});
@@ -177,7 +181,7 @@ class SectionTitle extends StatelessWidget {
   }
 }
 
-//Category Item Widget
+// 🔹 Category Item Widget
 class CategoryItem extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -209,7 +213,7 @@ class CategoryItem extends StatelessWidget {
   }
 }
 
-//Product Card Widget
+// 🔹 Product Card Widget
 class ProductCard extends StatelessWidget {
   final Product product;
   final double width;
@@ -238,7 +242,7 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Product Image
+          // 🔹 Product Image
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.asset(
@@ -264,6 +268,102 @@ class ProductCard extends StatelessWidget {
             child: Text(
               product.location,
               style: const TextStyle(fontSize: 11, color: Colors.grey),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// 🔹 Product Detail Page
+class ProductDetailPage extends StatelessWidget {
+  final Product product;
+
+  const ProductDetailPage({super.key, required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        title: const Text("Product Details"),
+        backgroundColor: const Color(0xFF264653),
+        foregroundColor: Colors.white,
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          // 🔹 Product Image
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(product.image, height: 200, fit: BoxFit.cover),
+          ),
+          const SizedBox(height: 16),
+
+          // 🔹 Title & Price
+          Text(
+            product.title,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            product.price,
+            style: const TextStyle(fontSize: 18, color: Colors.green),
+          ),
+
+          const SizedBox(height: 16),
+
+          // 🔹 Condition & Description
+          const Text("Condition: Excellent", style: TextStyle(fontSize: 14)),
+          const SizedBox(height: 8),
+          const Text(
+            "Selling my Plastic Shoe rack, bought it in first year, in excellent condition, comes with original tools and packaging. Reach out to me if you want to buy.",
+            style: TextStyle(fontSize: 14),
+          ),
+
+          const SizedBox(height: 24),
+
+          // 🔹 Seller Info
+          Row(
+            children: [
+              const CircleAvatar(
+                backgroundImage: AssetImage('assets/profile.jpg'),
+                radius: 24,
+              ),
+              const SizedBox(width: 12),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text(
+                    "Phillip Gbeho",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "Victory Towers Hostel",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 24),
+
+          // 🔹 Message Button
+          ElevatedButton.icon(
+            onPressed: () {
+              // TODO: Navigate to chat page
+            },
+            icon: const Icon(Icons.message),
+            label: const Text("Message"),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF264653),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
           ),
         ],

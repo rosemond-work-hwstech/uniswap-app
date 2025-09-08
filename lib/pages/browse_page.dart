@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// 🔹 Product Model (reuse or extend your existing one)
+// 🔹 Product Model
 class Product {
   final String image;
   final String title;
@@ -40,6 +40,7 @@ final List<Product> marketplaceItems = [
     title: 'Textbooks Bundle',
     price: 'GHS 90',
     seller: 'Kojo',
+    isUrgent: true,
   ),
   Product(
     image: 'assets/sample.jpg',
@@ -70,7 +71,22 @@ class _BrowsePageState extends State<BrowsePage> {
     return Scaffold(
       body: Column(
         children: [
-          // 🔍 Search Bar
+          // 🔹 Title Bar
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            color: const Color(0xFF264653),
+            child: const Text(
+              'Browse Items',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          // 🔹 Search Bar
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
@@ -88,7 +104,7 @@ class _BrowsePageState extends State<BrowsePage> {
             ),
           ),
 
-          //Filter Chips
+          // 🔹 Filter Chips
           SizedBox(
             height: 40,
             child: ListView(
@@ -98,8 +114,12 @@ class _BrowsePageState extends State<BrowsePage> {
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: FilterChip(
-                    label: Text(filter),
+                    label: Text(
+                      filter,
+                      style: const TextStyle(color: Colors.white),
+                    ),
                     selected: false,
+                    backgroundColor: const Color(0xFF264653),
                     onSelected: (val) {
                       // TODO: Implement filter logic
                     },
@@ -111,7 +131,7 @@ class _BrowsePageState extends State<BrowsePage> {
 
           const SizedBox(height: 16),
 
-          //Item Grid
+          // 🔹 Item Grid
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -143,7 +163,7 @@ class _BrowsePageState extends State<BrowsePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //Image
+          // 🔹 Image
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.asset(
@@ -165,7 +185,10 @@ class _BrowsePageState extends State<BrowsePage> {
                 ),
                 Text(
                   product.price,
-                  style: const TextStyle(color: Colors.green),
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 Text(
                   "Seller: ${product.seller}",
@@ -173,7 +196,7 @@ class _BrowsePageState extends State<BrowsePage> {
                 ),
                 const SizedBox(height: 4),
 
-                //Badges
+                // 🔹 Badges
                 Row(
                   children: [
                     if (product.isUrgent) _buildBadge("Urgent", Colors.red),
