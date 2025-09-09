@@ -4,6 +4,7 @@ import 'pages/browse_page.dart';
 import 'pages/messages_page.dart';
 import 'pages/profile_page.dart';
 import 'pages/login_page.dart';
+import 'pages/main_screen.dart';
 
 void main() {
   runApp(const UniSwapApp());
