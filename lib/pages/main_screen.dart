@@ -1,30 +1,8 @@
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart';
-import 'pages/browse_page.dart';
-import 'pages/messages_page.dart';
-import 'pages/profile_page.dart';
-import 'pages/login_page.dart';
-
-void main() {
-  runApp(const UniSwapApp());
-}
-
-class UniSwapApp extends StatelessWidget {
-  const UniSwapApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'UniSwap',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        scaffoldBackgroundColor: const Color(0xFFF7F7F7),
-      ),
-      home: const LoginPage(), //Start with login
-    );
-  }
-}
+import 'home_page.dart';
+import 'browse_page.dart';
+import 'messages_page.dart';
+import 'profile_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

@@ -7,40 +7,46 @@ class Product {
   final String title;
   final String price;
   final String location;
+  final String? tag;
 
   Product({
     required this.image,
     required this.title,
     required this.price,
     required this.location,
+    required this.tag,
   });
 }
 
 // 🔹 Sample Product Data
 final List<Product> hotDeals = [
   Product(
-    image: 'assets/sample.jpg',
-    title: 'Gaming Headphones',
+    image: 'images/headset.jpg',
+    title: 'Oraimo Headphones',
     price: 'GHS 399',
     location: 'Victory Towers Hostel',
+    tag: 'New',
   ),
   Product(
-    image: 'assets/sample.jpg',
-    title: 'Mini Fridge',
+    image: 'images/tablet.jpg',
+    title: 'Redmi tablet',
     price: 'GHS 650',
     location: 'Pent Block B',
+    tag: 'Hot',
   ),
   Product(
-    image: 'assets/sample.jpg',
+    image: 'images/foldable laptop.jpg',
     title: 'Study Lamp',
     price: 'GHS 80',
     location: 'Legon Hall',
+    tag: 'Sale',
   ),
   Product(
-    image: 'assets/sample.jpg',
+    image: 'images/wardrobe.jpg',
     title: 'Used Laptop',
     price: 'GHS 1200',
     location: 'Jubilee Hall',
+    tag: 'New',
   ),
 ];
 
@@ -83,7 +89,7 @@ class HomePage extends StatelessWidget {
                 ),
                 const CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage('assets/profile.jpg'),
+                  backgroundImage: AssetImage('images/headset.jpg'),
                 ),
               ],
             ),
@@ -122,7 +128,7 @@ class HomePage extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
-                childAspectRatio: 0.7,
+                childAspectRatio: 0.75,
               ),
               itemBuilder: (context, index) {
                 final product = hotDeals[index];
@@ -144,7 +150,7 @@ class HomePage extends StatelessWidget {
           // 🔹 Recently Viewed Scroll
           const SectionTitle(title: "Recently Viewed"),
           SizedBox(
-            height: 230,
+            height: 310,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -213,7 +219,6 @@ class CategoryItem extends StatelessWidget {
   }
 }
 
-// 🔹 Product Card Widget
 class ProductCard extends StatelessWidget {
   final Product product;
   final double width;
@@ -247,27 +252,65 @@ class ProductCard extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.asset(
               product.image,
-              height: 120,
+              height: 160,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
           ),
+
+          // 🔹 Text Section
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              product.price,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10.0,
+              vertical: 8.0,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(product.title, style: const TextStyle(fontSize: 12)),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            child: Text(
-              product.location,
-              style: const TextStyle(fontSize: 11, color: Colors.grey),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.title,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  product.price,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF264653),
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  product.location,
+                  style: const TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+                const SizedBox(height: 10),
+
+                // 🔹 Tag Badge
+                if (product.tag != null && product.tag!.isNotEmpty)
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 6,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade50,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      product.tag!,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
         ],
@@ -297,7 +340,12 @@ class ProductDetailPage extends StatelessWidget {
           // 🔹 Product Image
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(product.image, height: 200, fit: BoxFit.cover),
+            child: Image.asset(
+              product.image,
+              height: 400,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
           const SizedBox(height: 16),
 
@@ -328,7 +376,7 @@ class ProductDetailPage extends StatelessWidget {
           Row(
             children: [
               const CircleAvatar(
-                backgroundImage: AssetImage('assets/profile.jpg'),
+                backgroundImage: AssetImage('images/top.jpg'),
                 radius: 24,
               ),
               const SizedBox(width: 12),
@@ -353,14 +401,14 @@ class ProductDetailPage extends StatelessWidget {
           // 🔹 Message Button
           ElevatedButton.icon(
             onPressed: () {
-              // TODO: Navigate to chat page
+              Navigator.pushNamed(context, '/messages_page.dart');
             },
             icon: const Icon(Icons.message),
             label: const Text("Message"),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF264653),
               foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(vertical: 14),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),

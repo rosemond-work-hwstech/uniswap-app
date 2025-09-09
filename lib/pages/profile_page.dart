@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               const CircleAvatar(
                 radius: 40,
-                backgroundImage: AssetImage('assets/profile.jpg'),
+                backgroundImage: AssetImage('images/headset.jpg'),
               ),
               const SizedBox(width: 16),
               Column(
@@ -117,7 +117,7 @@ class ProfilePage extends StatelessWidget {
                             top: Radius.circular(12),
                           ),
                           child: Image.asset(
-                            'assets/sample.jpg',
+                            'images/wardrobe.jpg',
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -148,13 +148,38 @@ class ProfilePage extends StatelessWidget {
             children: List.generate(2, (index) {
               return ListTile(
                 leading: const CircleAvatar(
-                  backgroundImage: AssetImage('assets/user1.jpg'),
+                  backgroundImage: AssetImage('images/top.jpg'),
                 ),
                 title: const Text("Buyer Name"),
                 subtitle: const Text("Great seller! Item was as described."),
                 trailing: const Icon(Icons.star, color: Colors.amber),
               );
             }),
+          ),
+
+          const SizedBox(height: 32),
+
+          // 🔹 Logout Button
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              icon: const Icon(Icons.logout, color: Colors.white),
+              label: const Text(
+                "Log Out",
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 161, 5, 5),
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {
+                // TODO: Handle logout logic
+                Navigator.pushReplacementNamed(context, '/'); // or LoginPage()
+              },
+            ),
           ),
         ],
       ),

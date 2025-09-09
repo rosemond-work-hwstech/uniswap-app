@@ -22,28 +22,28 @@ class Product {
 // 🔹 Sample Data
 final List<Product> marketplaceItems = [
   Product(
-    image: 'assets/sample.jpg',
+    image: 'images/wardrobe.jpg',
     title: 'Bluetooth Speaker',
     price: 'GHS 120',
     seller: 'Kwame',
     isUrgent: true,
   ),
   Product(
-    image: 'assets/sample.jpg',
+    image: 'images/CAR.jpg',
     title: 'Desk Chair',
     price: 'GHS 250',
     seller: 'Ama',
     isStudentDeal: true,
   ),
   Product(
-    image: 'assets/sample.jpg',
+    image: 'images/tv.jpg',
     title: 'Textbooks Bundle',
     price: 'GHS 90',
     seller: 'Kojo',
     isUrgent: true,
   ),
   Product(
-    image: 'assets/sample.jpg',
+    image: 'images/laptop.jpg',
     title: 'Rice Cooker',
     price: 'GHS 180',
     seller: 'Esi',
@@ -163,48 +163,55 @@ class _BrowsePageState extends State<BrowsePage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 🔹 Image
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.asset(
-              product.image,
-              height: 100,
-              width: double.infinity,
-              fit: BoxFit.cover,
+          // 🔹 Image (fills half the card height)
+          Expanded(
+            flex: 1,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12),
+              ),
+              child: Image.asset(
+                product.image,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.title,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  product.price,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
+          // 🔹 Text & Badges (fills other half)
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                ),
-                Text(
-                  "Seller: ${product.seller}",
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
-                ),
-                const SizedBox(height: 4),
+                  Text(
+                    product.price,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    "Seller: ${product.seller}",
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                  ),
 
-                // 🔹 Badges
-                Row(
-                  children: [
-                    if (product.isUrgent) _buildBadge("Urgent", Colors.red),
-                    if (product.isStudentDeal)
-                      _buildBadge("Student Deal", Colors.blue),
-                  ],
-                ),
-              ],
+                  Row(
+                    children: [
+                      if (product.isUrgent) _buildBadge("Urgent", Colors.red),
+                      if (product.isStudentDeal)
+                        _buildBadge("Student Deal", Colors.blue),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ],
