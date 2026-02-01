@@ -150,7 +150,7 @@ class ProfilePage extends StatelessWidget {
                 leading: const CircleAvatar(
                   backgroundImage: AssetImage('images/top.jpg'),
                 ),
-                title: const Text("Buyer Name"),
+                title: const Text("Godfred Amoako"),
                 subtitle: const Text("Great seller! Item was as described."),
                 trailing: const Icon(Icons.star, color: Colors.amber),
               );

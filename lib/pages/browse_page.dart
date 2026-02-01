@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// 🔹 Product Model
+//Product Model
 class Product {
   final String image;
   final String title;
@@ -19,32 +19,32 @@ class Product {
   });
 }
 
-// 🔹 Sample Data
+//Sample Data
 final List<Product> marketplaceItems = [
   Product(
     image: 'images/wardrobe.jpg',
-    title: 'Bluetooth Speaker',
+    title: 'Wardrobe',
     price: 'GHS 120',
     seller: 'Kwame',
     isUrgent: true,
   ),
   Product(
     image: 'images/CAR.jpg',
-    title: 'Desk Chair',
+    title: 'Car',
     price: 'GHS 250',
     seller: 'Ama',
     isStudentDeal: true,
   ),
   Product(
     image: 'images/tv.jpg',
-    title: 'Textbooks Bundle',
+    title: 'Television',
     price: 'GHS 90',
     seller: 'Kojo',
     isUrgent: true,
   ),
   Product(
     image: 'images/laptop.jpg',
-    title: 'Rice Cooker',
+    title: 'LG laptop',
     price: 'GHS 180',
     seller: 'Esi',
     isUrgent: true,
@@ -86,7 +86,7 @@ class _BrowsePageState extends State<BrowsePage> {
             ),
           ),
 
-          // 🔹 Search Bar
+          //Search Bar
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
@@ -104,7 +104,7 @@ class _BrowsePageState extends State<BrowsePage> {
             ),
           ),
 
-          // 🔹 Filter Chips
+          //Filter Chips
           SizedBox(
             height: 40,
             child: ListView(
@@ -131,7 +131,7 @@ class _BrowsePageState extends State<BrowsePage> {
 
           const SizedBox(height: 16),
 
-          // 🔹 Item Grid
+          //Item Grid
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -178,7 +178,7 @@ class _BrowsePageState extends State<BrowsePage> {
             ),
           ),
 
-          // 🔹 Text & Badges (fills other half)
+          //Text & Badges (fills other half)
           Expanded(
             flex: 1,
             child: Padding(

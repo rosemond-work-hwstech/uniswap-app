@@ -36,14 +36,14 @@ final List<Product> hotDeals = [
   ),
   Product(
     image: 'images/foldable laptop.jpg',
-    title: 'Study Lamp',
+    title: 'Foldable laptop',
     price: 'GHS 80',
     location: 'Legon Hall',
     tag: 'Sale',
   ),
   Product(
     image: 'images/wardrobe.jpg',
-    title: 'Used Laptop',
+    title: 'Wardrobe',
     price: 'GHS 1200',
     location: 'Jubilee Hall',
     tag: 'New',
@@ -252,7 +252,7 @@ class ProductCard extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.asset(
               product.image,
-              height: 160,
+              height: 180,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
@@ -401,7 +401,7 @@ class ProductDetailPage extends StatelessWidget {
           // 🔹 Message Button
           ElevatedButton.icon(
             onPressed: () {
-              Navigator.pushNamed(context, '/messages_page.dart');
+              Navigator.pushNamed(context, '/messages');
             },
             icon: const Icon(Icons.message),
             label: const Text("Message"),
