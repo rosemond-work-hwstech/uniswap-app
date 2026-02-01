@@ -152,9 +152,7 @@ class _PostItemPageState extends State<PostItemPage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {
-                  // TODO: Handle post logic
-                },
+                onPressed: () {},
                 child: const Text(
                   'Post Item',
                   style: TextStyle(fontSize: 16, color: Colors.white),
@@ -230,7 +228,7 @@ class _PostItemPageState extends State<PostItemPage> {
           ),
           const SizedBox(height: 6),
           DropdownButtonFormField<String>(
-            value: value,
+            initialValue: value,
             items: items
                 .map((item) => DropdownMenuItem(value: item, child: Text(item)))
                 .toList(),

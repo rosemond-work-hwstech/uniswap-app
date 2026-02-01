@@ -120,9 +120,7 @@ class _BrowsePageState extends State<BrowsePage> {
                     ),
                     selected: false,
                     backgroundColor: const Color(0xFF264653),
-                    onSelected: (val) {
-                      // TODO: Implement filter logic
-                    },
+                    onSelected: (val) {},
                   ),
                 );
               }).toList(),
@@ -224,7 +222,7 @@ class _BrowsePageState extends State<BrowsePage> {
       margin: const EdgeInsets.only(right: 6),
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(6),
         border: Border.all(color: color),
       ),

@@ -110,12 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("Don't have an account?"),
-                    TextButton(
-                      onPressed: () {
-                        // TODO: Navigate to RegisterPage
-                      },
-                      child: const Text('Register'),
-                    ),
+                    TextButton(onPressed: () {}, child: const Text('Register')),
                   ],
                 ),
               ],

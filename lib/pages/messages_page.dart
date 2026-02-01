@@ -196,26 +196,17 @@ class ChatDetailPage extends StatelessWidget {
                 // Emoji Button
                 IconButton(
                   icon: const Icon(Icons.emoji_emotions_outlined),
-                  onPressed: () {
-                    // TODO: Show emoji picker
-                  },
+                  onPressed: () {},
                 ),
 
                 // Image Upload Button
                 IconButton(
                   icon: const Icon(Icons.image_outlined),
-                  onPressed: () {
-                    // TODO: Handle image upload
-                  },
+                  onPressed: () {},
                 ),
 
                 // Voice Note Button
-                IconButton(
-                  icon: const Icon(Icons.mic_none),
-                  onPressed: () {
-                    // TODO: Record voice note
-                  },
-                ),
+                IconButton(icon: const Icon(Icons.mic_none), onPressed: () {}),
 
                 // Text Field
                 Expanded(
@@ -236,12 +227,7 @@ class ChatDetailPage extends StatelessWidget {
                 ),
 
                 // Send Button
-                IconButton(
-                  icon: const Icon(Icons.send),
-                  onPressed: () {
-                    // TODO: Send message
-                  },
-                ),
+                IconButton(icon: const Icon(Icons.send), onPressed: () {}),
               ],
             ),
           ),

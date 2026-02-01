@@ -176,7 +176,6 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                // TODO: Handle logout logic
                 Navigator.pushReplacementNamed(context, '/'); // or LoginPage()
               },
             ),
